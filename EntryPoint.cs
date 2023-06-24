@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EntryPoint : MonoBehaviour
 {
+    [SerializeField] private FPSConstroller _fpsController;
     [SerializeField] private Player _player;
     [SerializeField] private PlayerMover _playerMover;
     [SerializeField] private GameFinishDisplay _gameFinishDisplay;
@@ -13,6 +14,7 @@ public class EntryPoint : MonoBehaviour
 
     private void Awake()
     {
+        _fpsController.Initialize();
         _player.Initialize();
         _playerMover.Initialize();
 

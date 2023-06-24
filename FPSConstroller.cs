@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class FPSConstroller : MonoBehaviour
 {
-    private void Start()
+    [SerializeField] private int _maxFps;
+
+    public void Initialize()
     {
-        Application.targetFrameRate = -1;
+        Application.targetFrameRate = _maxFps;
     }
 }
