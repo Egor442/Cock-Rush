@@ -10,10 +10,10 @@ public class Player : MonoBehaviour
     [SerializeField] private Finish _finish;
     [SerializeField] private GameObject _gameOverDisplay;
     [SerializeField] private GameObject _gameFinishDisplay;
+    [SerializeField] private Obstacle[] _obstacles;
 
     private Animator _animator;
     private PlayerMover _mover;
-    private Obstacle[] _obstacles;
 
     public event UnityAction Losing;
     public event UnityAction Finished;   
@@ -22,7 +22,6 @@ public class Player : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _mover = GetComponent<PlayerMover>();
-        _obstacles = FindObjectsOfType<Obstacle>();
     }
 
     private void OnEnable()
@@ -46,17 +45,21 @@ public class Player : MonoBehaviour
     private void Finish()
     {
         _mover.NullifySpeed();
+
         _animator.SetBool("Run", false);
         _animator.SetBool("Eat", true);
-        _gameFinishDisplay.SetActive(true);
+
+        _gameFinishDisplay.SetActive(true);       
         Finished?.Invoke();
     }
 
     private void Lose()
     {
         _mover.NullifySpeed();
+
         _animator.SetBool("Run", false);
         _animator.SetBool("Turn Head", true);
+
         _gameOverDisplay.SetActive(true);
         Losing?.Invoke();
     }

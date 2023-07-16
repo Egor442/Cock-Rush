@@ -12,6 +12,8 @@ public class GameFinishDisplay : MonoBehaviour
     [SerializeField] private Button _restartButton;
     [SerializeField] private Button _nextLevelButton;
 
+    private static int _indexCurrentScene;
+
     private CanvasGroup _gameOverGroup;
 
     public void Initialize()
@@ -23,14 +25,14 @@ public class GameFinishDisplay : MonoBehaviour
     {
         _player.Finished += OnFinished;
         _restartButton.onClick.AddListener(OnRestartButtonOnClick);
-        _nextLevelButton.onClick.AddListener(OnNextLevelButtonOnClick);
+        _nextLevelButton.onClick.AddListener(OnMainMenuButtonClick);
     }
 
     private void OnDisable()
     {
         _player.Finished -= OnFinished;
         _restartButton.onClick.RemoveListener(OnRestartButtonOnClick);
-        _nextLevelButton.onClick.RemoveListener(OnNextLevelButtonOnClick);
+        _nextLevelButton.onClick.RemoveListener(OnMainMenuButtonClick);
     }
 
     private void OnFinished()
@@ -41,11 +43,11 @@ public class GameFinishDisplay : MonoBehaviour
     private void OnRestartButtonOnClick()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    private void OnNextLevelButtonOnClick()
+    private void OnMainMenuButtonClick()
     {
-        
+        SceneManager.LoadScene(0);
     }
 }

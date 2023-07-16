@@ -6,7 +6,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Animator))]
 public class Chick : MonoBehaviour
 {
-    [SerializeField] private float _speed;
+    [SerializeField] private ChickData _data;
     [SerializeField] private Transform _target;
 
     private Vector3 _targetLastPosition;
@@ -44,7 +44,7 @@ public class Chick : MonoBehaviour
 
     private void Follow()
     {
-        gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, _target.position, _speed * Time.deltaTime);
+        gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, _target.position, _data.Speed * Time.deltaTime);
         _targetLastPosition = _target.position;
     } 
 }
