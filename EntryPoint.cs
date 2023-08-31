@@ -7,6 +7,8 @@ public class EntryPoint : MonoBehaviour
     [SerializeField] private FPSConstroller _fpsController;
     [SerializeField] private Player _player;
     [SerializeField] private PlayerMover _playerMover;
+    [SerializeField] private PlayerLoser _playerLoser;
+    [SerializeField] private PlayerFinisher _playerFinisher;
     [SerializeField] private GameFinishDisplay _gameFinishDisplay;
     [SerializeField] private GameOverDisplay _gameOverDisplay;
 
@@ -17,6 +19,8 @@ public class EntryPoint : MonoBehaviour
         _fpsController.Initialize();
         _player.Initialize();
         _playerMover.Initialize();
+        _playerLoser.Initialize();
+        _playerFinisher.Initialized();
 
         _chickPoints = FindObjectsOfType<Chick>();
 

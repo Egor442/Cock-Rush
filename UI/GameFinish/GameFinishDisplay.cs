@@ -8,7 +8,7 @@ using DG.Tweening;
 [RequireComponent(typeof(CanvasGroup))]
 public class GameFinishDisplay : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    [SerializeField] private PlayerFinisher _finisher;
     [SerializeField] private Button _restartButton;
     [SerializeField] private Button _nextLevelButton;
 
@@ -23,14 +23,14 @@ public class GameFinishDisplay : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.Finished += OnFinished;
+        _finisher.Finished += OnFinished;
         _restartButton.onClick.AddListener(OnRestartButtonOnClick);
         _nextLevelButton.onClick.AddListener(OnMainMenuButtonClick);
     }
 
     private void OnDisable()
     {
-        _player.Finished -= OnFinished;
+        _finisher.Finished -= OnFinished;
         _restartButton.onClick.RemoveListener(OnRestartButtonOnClick);
         _nextLevelButton.onClick.RemoveListener(OnMainMenuButtonClick);
     }

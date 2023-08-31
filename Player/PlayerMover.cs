@@ -22,10 +22,10 @@ public class PlayerMover : MonoBehaviour
         _speed = 0;
         _stepSize = 0;
     }
-    
-    private void FixedUpdate()
+
+    public void Move()
     {
         gameObject.transform.Translate(new Vector3(0, 0, _speed * Time.deltaTime));
         _rigitBody.velocity = new Vector3(_joystick.Horizontal * _stepSize, _rigitBody.velocity.y, _rigitBody.velocity.z);
-    }
+    }    
 }

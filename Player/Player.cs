@@ -3,64 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(PlayerMover))]
+[RequireComponent(typeof(PlayerFinisher))]
+[RequireComponent(typeof(PlayerLoser))]
 public class Player : MonoBehaviour
 {
     [SerializeField] private Finish _finish;
-    [SerializeField] private GameObject _gameOverDisplay;
-    [SerializeField] private GameObject _gameFinishDisplay;
-    [SerializeField] private Obstacle[] _obstacles;
 
-    private Animator _animator;
     private PlayerMover _mover;
-
-    public event UnityAction Losing;
-    public event UnityAction Finished;   
+    private PlayerFinisher _finisher;
+    private PlayerLoser _loser;
 
     public void Initialize()
     {
-        _animator = GetComponent<Animator>();
         _mover = GetComponent<PlayerMover>();
+        _finisher = GetComponent<PlayerFinisher>();
+        _loser = GetComponent<PlayerLoser>();
     }
 
     private void OnEnable()
     {
         _finish.Finished += Finish;
         _finish.Losing += Lose;
-
-        foreach (var obstacle in _obstacles)
-            obstacle.Encountered += Lose;
     }
 
     private void OnDisable()
     {
         _finish.Finished -= Finish;
         _finish.Losing -= Lose;
+    }
 
-        foreach (var obstacle in _obstacles)
-            obstacle.Encountered -= Lose;
+    private void FixedUpdate()
+    {
+        _mover.Move();
     }
 
     private void Finish()
     {
-        _mover.NullifySpeed();
-
-        _animator.SetBool("Run", false);
-        _animator.SetBool("Eat", true);
-
-        _gameFinishDisplay.SetActive(true);       
-        Finished?.Invoke();
+        _finisher.Finish();
     }
 
     private void Lose()
     {
-        _mover.NullifySpeed();
-
-        _animator.SetBool("Run", false);
-        _animator.SetBool("Turn Head", true);
-
-        _gameOverDisplay.SetActive(true);
-        Losing?.Invoke();
+        _loser.Lose();
     }
 }

@@ -4,13 +4,11 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(ChickMover))]
 public class Chick : MonoBehaviour
 {
-    [SerializeField] private ChickData _data;
-    [SerializeField] private Transform _target;
-
-    private Vector3 _targetLastPosition;
     private Animator _animator;
+    private ChickMover _mover;
     private bool _isReached;
 
     public event UnityAction Reached;
@@ -18,16 +16,14 @@ public class Chick : MonoBehaviour
     public void Initialize()
     {
         _animator = GetComponent<Animator>();
+        _mover = GetComponent<ChickMover>();
     }
 
     private void FixedUpdate()
     {
-        if(_isReached)
-        {
-            if (_targetLastPosition != _target.position)
-                Follow();
-        }
-    }  
+        if (_isReached)
+            _mover.Follow();
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -41,10 +37,4 @@ public class Chick : MonoBehaviour
             Reached?.Invoke();
         }
     }
-
-    private void Follow()
-    {
-        gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, _target.position, _data.Speed * Time.deltaTime);
-        _targetLastPosition = _target.position;
-    } 
 }
