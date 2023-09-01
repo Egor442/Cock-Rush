@@ -34,7 +34,7 @@ public class PlayerMover : MonoBehaviour
     private void OnDisable() 
     {
         _finisher.Finished -= NullifySpeed;
-        _loser.Losing += NullifySpeed;
+        _loser.Losing -= NullifySpeed;
     }
 
     private void NullifySpeed()
