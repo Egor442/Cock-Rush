@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChickMover : MonoBehaviour
+public class ChickMover : MonoBehaviour, IChickMover
 {
     [SerializeField] private ChickData _data;
     [SerializeField] private Transform _target;
