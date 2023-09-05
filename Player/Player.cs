@@ -10,9 +10,9 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private Finish _finish;
 
-    private PlayerMover _mover;
-    private PlayerFinisher _finisher;
-    private PlayerLoser _loser;
+    private IPlayerMover _mover;
+    private IPlayerFinisher _finisher;
+    private IPlayerLoser _loser;
 
     public void Initialize()
     {

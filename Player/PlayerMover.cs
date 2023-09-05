@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(BoxCollider))]
-public class PlayerMover : MonoBehaviour
+public class PlayerMover : MonoBehaviour, IPlayerMover
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _stepSize;
@@ -34,7 +34,7 @@ public class PlayerMover : MonoBehaviour
     private void OnDisable() 
     {
         _finisher.Finished -= NullifySpeed;
-        _loser.Losing += NullifySpeed;
+        _loser.Losing -= NullifySpeed;
     }
 
     private void NullifySpeed()

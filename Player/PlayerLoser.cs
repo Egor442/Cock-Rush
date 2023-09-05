@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerLoser : MonoBehaviour
+public class PlayerLoser : MonoBehaviour, IPlayerLoser
 {
     [SerializeField] private GameObject _gameOverDisplay;
     [SerializeField] private Obstacle[] _obstacles;

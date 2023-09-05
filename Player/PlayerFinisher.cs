@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerFinisher : MonoBehaviour
+public class PlayerFinisher : MonoBehaviour, IPlayerFinisher
 {
     [SerializeField] private GameObject _gameFinishDisplay;
 
     public event UnityAction Finished;
-  
+
     public void Finish()
     {
         _gameFinishDisplay.SetActive(true);
