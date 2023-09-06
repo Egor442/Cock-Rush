@@ -4,17 +4,18 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(ChickMover))]
+[RequireComponent(typeof(ChickAnimator))]
 public class Chick : MonoBehaviour
 {
-    private IChickAnimator _animator;
     private IChickMover _mover;
+    private IChickAnimator _animator;
     private bool _isReached;
 
     public event UnityAction Reached;
 
     public void Initialize()
     {
-        _mover = GetComponent<IChickMover>();
+        _mover = GetComponent<ChickMover>();
         _animator = GetComponent<ChickAnimator>();
     }
 
