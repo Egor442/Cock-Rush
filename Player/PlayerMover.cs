@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -9,8 +7,8 @@ public class PlayerMover : MonoBehaviour, IPlayerMover
     [SerializeField] private float _speed;
     [SerializeField] private float _stepSize;
     [SerializeField] private Joystick _joystick;
-    [SerializeField] private PlayerFinisher _finisher;
-    [SerializeField] private PlayerLoser _loser;
+    [SerializeField] private PlayerFinisher _playerFinisher;
+    [SerializeField] private PlayerLoser _playerLoser;
 
     private Rigidbody _rigitBody;
 
@@ -27,14 +25,14 @@ public class PlayerMover : MonoBehaviour, IPlayerMover
 
     private void OnEnable() 
     {
-        _finisher.Finished += NullifySpeed;
-        _loser.Losing += NullifySpeed;
+        _playerFinisher.Finished += NullifySpeed;
+        _playerLoser.Losing += NullifySpeed;
     }  
 
     private void OnDisable() 
     {
-        _finisher.Finished -= NullifySpeed;
-        _loser.Losing -= NullifySpeed;
+        _playerFinisher.Finished -= NullifySpeed;
+        _playerLoser.Losing -= NullifySpeed;
     }
 
     private void NullifySpeed()

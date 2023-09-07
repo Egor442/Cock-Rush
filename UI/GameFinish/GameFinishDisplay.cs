@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -8,7 +6,7 @@ using DG.Tweening;
 [RequireComponent(typeof(CanvasGroup))]
 public class GameFinishDisplay : MonoBehaviour
 {
-    [SerializeField] private PlayerFinisher _finisher;
+    [SerializeField] private PlayerFinisher _playerFinisher;
     [SerializeField] private Button _restartButton;
     [SerializeField] private Button _nextLevelButton;
 
@@ -23,14 +21,14 @@ public class GameFinishDisplay : MonoBehaviour
 
     private void OnEnable()
     {
-        _finisher.Finished += OnFinished;
+        _playerFinisher.Finished += OnFinished;
         _restartButton.onClick.AddListener(OnRestartButtonOnClick);
         _nextLevelButton.onClick.AddListener(OnMainMenuButtonClick);
     }
 
     private void OnDisable()
     {
-        _finisher.Finished -= OnFinished;
+        _playerFinisher.Finished -= OnFinished;
         _restartButton.onClick.RemoveListener(OnRestartButtonOnClick);
         _nextLevelButton.onClick.RemoveListener(OnMainMenuButtonClick);
     }

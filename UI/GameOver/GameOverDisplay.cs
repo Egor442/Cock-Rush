@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
@@ -8,7 +6,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(CanvasGroup))]
 public class GameOverDisplay : MonoBehaviour
 {
-    [SerializeField] private PlayerLoser _loser;
+    [SerializeField] private PlayerLoser _playerLoser;
     [SerializeField] private Button _restartButton;
 
     private CanvasGroup _gameOverGroup;
@@ -20,13 +18,13 @@ public class GameOverDisplay : MonoBehaviour
 
     private void OnEnable()
     {
-        _loser.Losing += OnDied;
+        _playerLoser.Losing += OnDied;
         _restartButton.onClick.AddListener(OnRestartButtonOnClick);
     }
 
     private void OnDisable()
     {
-        _loser.Losing -= OnDied;
+        _playerLoser.Losing -= OnDied;
         _restartButton.onClick.RemoveListener(OnRestartButtonOnClick);
     }
 

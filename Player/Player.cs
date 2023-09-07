@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,15 +8,15 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private Finish _finish;
 
-    private IPlayerMover _mover;
-    private IPlayerFinisher _finisher;
-    private IPlayerLoser _loser;
+    private IPlayerMover _playerMover;
+    private IPlayerFinisher _playerFinisher;
+    private IPlayerLoser _playerLoser;
 
     public void Initialize()
     {
-        _mover = GetComponent<PlayerMover>();
-        _finisher = GetComponent<PlayerFinisher>();
-        _loser = GetComponent<PlayerLoser>();
+        _playerMover = GetComponent<PlayerMover>();
+        _playerFinisher = GetComponent<PlayerFinisher>();
+        _playerLoser = GetComponent<PlayerLoser>();
     }
 
     private void OnEnable()
@@ -35,16 +33,16 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _mover.Move();
+        _playerMover.Move();
     }
 
     private void Finish()
     {
-        _finisher.Finish();
+        _playerFinisher.Finish();
     }
 
     private void Lose()
     {
-        _loser.Lose();
+        _playerLoser.Lose();
     }
 }

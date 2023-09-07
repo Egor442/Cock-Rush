@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 public class PlayerAnimator : MonoBehaviour, IPlayerAnimator
 {
-    [SerializeField] private PlayerFinisher _finisher;
-    [SerializeField] private PlayerLoser _loser;
+    [SerializeField] private PlayerFinisher _playerFinisher;
+    [SerializeField] private PlayerLoser _playerLoser;
 
     private Animator _animator;
 
@@ -29,13 +27,13 @@ public class PlayerAnimator : MonoBehaviour, IPlayerAnimator
 
     private void OnEnable() 
     {
-        _finisher.Finished += Finish;
-        _loser.Losing += Lose;
+        _playerFinisher.Finished += Finish;
+        _playerLoser.Losing += Lose;
     }
 
     private void OnDisable() 
     {
-        _finisher.Finished -= Finish;
-        _loser.Losing += Lose;
+        _playerFinisher.Finished -= Finish;
+        _playerLoser.Losing += Lose;
     }    
 }

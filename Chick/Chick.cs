@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,22 +5,22 @@ using UnityEngine.Events;
 [RequireComponent(typeof(ChickAnimator))]
 public class Chick : MonoBehaviour
 {
-    private IChickMover _mover;
-    private IChickAnimator _animator;
+    private IChickMover _chickMover;
+    private IChickAnimator _chickAnimator;
     private bool _isReached;
 
     public event UnityAction Reached;
 
     public void Initialize()
     {
-        _mover = GetComponent<ChickMover>();
-        _animator = GetComponent<ChickAnimator>();
+        _chickMover = GetComponent<ChickMover>();
+        _chickAnimator = GetComponent<ChickAnimator>();
     }
 
     private void FixedUpdate()
     {
         if (_isReached)
-            _mover.Follow();
+            _chickMover.Follow();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -33,7 +31,7 @@ public class Chick : MonoBehaviour
         if (collision.collider.TryGetComponent(out Player player))
         {
             _isReached = true;
-            _animator.Run();
+            _chickAnimator.Run();
             Reached?.Invoke();
         }
     }
