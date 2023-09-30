@@ -20,13 +20,17 @@ public class Chick : MonoBehaviour
     private void FixedUpdate()
     {
         if (_isReached)
+        {
             _chickMover.Follow();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (_isReached)
+        {
             return;
+        }
 
         if (collision.collider.TryGetComponent(out Player player))
         {

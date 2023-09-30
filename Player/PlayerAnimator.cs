@@ -34,6 +34,6 @@ public class PlayerAnimator : MonoBehaviour, IPlayerAnimator
     private void OnDisable() 
     {
         _playerFinisher.Finished -= Finish;
-        _playerLoser.Losing += Lose;
+        _playerLoser.Losing -= Lose;
     }    
 }

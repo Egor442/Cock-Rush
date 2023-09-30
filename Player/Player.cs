@@ -4,7 +4,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(PlayerMover))]
 [RequireComponent(typeof(PlayerFinisher))]
 [RequireComponent(typeof(PlayerLoser))]
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IPlayer
 {
     [SerializeField] private Finish _finish;
 
@@ -17,6 +17,16 @@ public class Player : MonoBehaviour
         _playerMover = GetComponent<PlayerMover>();
         _playerFinisher = GetComponent<PlayerFinisher>();
         _playerLoser = GetComponent<PlayerLoser>();
+    }
+
+    public void Finish()
+    {
+        _playerFinisher.Finish();
+    }
+
+    public void Lose()
+    {
+        _playerLoser.Lose();
     }
 
     private void OnEnable()
@@ -34,15 +44,5 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         _playerMover.Move();
-    }
-
-    private void Finish()
-    {
-        _playerFinisher.Finish();
-    }
-
-    private void Lose()
-    {
-        _playerLoser.Lose();
-    }
+    }   
 }

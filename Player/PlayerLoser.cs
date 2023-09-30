@@ -17,12 +17,16 @@ public class PlayerLoser : MonoBehaviour, IPlayerLoser
     private void OnEnable()
     {
         foreach (var obstacle in _obstacles)
+        {
             obstacle.Encountered += Lose;
+        }
     }
 
     private void OnDisable()
     {
         foreach (var obstacle in _obstacles)
+        {
             obstacle.Encountered -= Lose;
+        }
     }
 }

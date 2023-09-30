@@ -19,10 +19,14 @@ public class EntryPoint : MonoBehaviour
         _playerAnimator.Initialize();
 
         foreach (var chickPoint in _chickPoints)
+        {
             chickPoint.Initialize();
+        }
 
-        foreach (var chickAnimators in _chickAnimators)
-            chickAnimators.Initialize();
+        foreach (var chickAnimator in _chickAnimators)
+        {
+            chickAnimator.Initialize();
+        }
 
         _gameOverDisplay.Initialize();
         _gameFinishDisplay.Initialize();

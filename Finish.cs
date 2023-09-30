@@ -14,10 +14,14 @@ public class Finish : MonoBehaviour
         {
             if (_score.CountCollectChicks != 0)
             {
-                if (_score.CountCollectChicks == _score.ChickPoints.Length)
+                if (_score.CountCollectChicks == _score.ChickPoints.Count)
+                {
                     Finished?.Invoke();
+                }
                 else
+                {
                     Losing?.Invoke();
+                }
             }
             else
             {
