@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ChickMover : MonoBehaviour, IChickMover
+public class ChickMover : MonoBehaviour
 {
     [SerializeField] private ChickData _data;
     [SerializeField] private Transform _target;

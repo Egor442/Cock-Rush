@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class ChickAnimator : MonoBehaviour, IChickAnimator
+public class ChickAnimator : MonoBehaviour
 {
     private Animator _animator;
 

@@ -5,8 +5,9 @@ using UnityEngine.Events;
 [RequireComponent(typeof(ChickAnimator))]
 public class Chick : MonoBehaviour
 {
-    private IChickMover _chickMover;
-    private IChickAnimator _chickAnimator;
+    private ChickMover _chickMover;
+    private ChickAnimator _chickAnimator;
+
     private bool _isReached;
 
     public event UnityAction Reached;

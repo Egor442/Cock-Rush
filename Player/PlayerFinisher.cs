@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerFinisher : MonoBehaviour, IPlayerFinisher
+public class PlayerFinisher : MonoBehaviour
 {
     [SerializeField] private GameObject _gameFinishDisplay;
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class PlayerAnimator : MonoBehaviour, IPlayerAnimator
+public class PlayerAnimator : MonoBehaviour
 {
     [SerializeField] private PlayerFinisher _playerFinisher;
     [SerializeField] private PlayerLoser _playerLoser;

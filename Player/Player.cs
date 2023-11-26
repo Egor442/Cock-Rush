@@ -4,13 +4,13 @@ using UnityEngine.Events;
 [RequireComponent(typeof(PlayerMover))]
 [RequireComponent(typeof(PlayerFinisher))]
 [RequireComponent(typeof(PlayerLoser))]
-public class Player : MonoBehaviour, IPlayer
+public class Player : MonoBehaviour
 {
     [SerializeField] private Finish _finish;
 
-    private IPlayerMover _playerMover;
-    private IPlayerFinisher _playerFinisher;
-    private IPlayerLoser _playerLoser;
+    private PlayerMover _playerMover;
+    private PlayerFinisher _playerFinisher;
+    private PlayerLoser _playerLoser;
 
     public void Initialize()
     {

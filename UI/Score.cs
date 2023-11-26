@@ -6,10 +6,10 @@ public class Score : MonoBehaviour
 {
     [SerializeField] private TMP_Text _currentScore;
     [SerializeField] private TMP_Text _countScore;
-    [SerializeField] private List<Chick> _chickPoints = new List<Chick>();
+    [SerializeField] private List<Chick> _chickPoints = new List<Chick>(); 
 
     public int CountCollectChicks { get; private set; }
-    public IReadOnlyList<Chick> ChickPoints => _chickPoints;
+    public IReadOnlyList<Chick> ChickPoints => _chickPoints; 
 
     private void OnEnable()
     {
